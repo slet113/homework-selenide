@@ -27,7 +27,7 @@ public class RegistrationTest {
 
     @Test
     void standardRegistration() {
-        $("[placeholder='Город']").setValue("");
+        $("[placeholder='Город']").setValue("Якутск");
         $("[placeholder='Дата встречи']").doubleClick();
         $("[placeholder='Дата встречи']").sendKeys(Keys.BACK_SPACE);
         String currentDate = generateDate(3, "dd.MM.yyyy");
