@@ -5,14 +5,10 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -31,7 +27,7 @@ public class RegistrationTest {
 
     @Test
     void standardRegistration() {
-        $("[placeholder='Город']").setValue("Якутск");
+        $("[placeholder='Город']").setValue("");
         $("[placeholder='Дата встречи']").doubleClick();
         $("[placeholder='Дата встречи']").sendKeys(Keys.BACK_SPACE);
         String currentDate = generateDate(3, "dd.MM.yyyy");
@@ -211,7 +207,7 @@ public class RegistrationTest {
         String currentDate = generateDate(3, "dd.MM.yyyy");
         $("[placeholder='Дата встречи']").setValue(currentDate);
         $("[name='name']").setValue("Романов Игорь");
-        $("[name='phone']").setValue("+79536988552");
+        $("[name='phone']").setValue("+79536988592");
         $x("//div/button").click();
         $x("//div//span[contains(text(), 'Я соглашаюсь с условиями обработки')]").shouldBe(visible);
     }
