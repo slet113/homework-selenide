@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -17,7 +18,6 @@ public class RegistrationTest {
     @BeforeEach
     void setUp() {
         Configuration.holdBrowserOpen = true;
-        Configuration.timeout = 15000;
         open("http://localhost:9999/");
     }
 
@@ -37,8 +37,8 @@ public class RegistrationTest {
         $("[data-test-id='agreement']").click();
         $x("//div/button").click();
         $(".notification__content")
-                .shouldHave(Condition.text("Встреча успешно забронирована на " + currentDate))
-                .shouldBe(Condition.visible);
+                .shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + currentDate));
     }
 
     @Test
@@ -53,8 +53,8 @@ public class RegistrationTest {
         $("[data-test-id='agreement']").click();
         $x("//div/button").click();
         $(".notification__content")
-                .shouldHave(Condition.text("Встреча успешно забронирована на " + currentDate))
-                .shouldBe(Condition.visible);
+                .shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + currentDate));
     }
 
     @Test
@@ -69,8 +69,8 @@ public class RegistrationTest {
         $("[data-test-id='agreement']").click();
         $x("//div/button").click();
         $(".notification__content")
-                .shouldHave(Condition.text("Встреча успешно забронирована на " + currentDate))
-                .shouldBe(Condition.visible);
+                .shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + currentDate));
     }
 
     @Test
